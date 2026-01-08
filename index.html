@@ -169,37 +169,51 @@
             animation: fadeInUp 1s ease-out 0.4s both;
         }
 
-        .hero-price-block {
-            display: inline-flex;
+        .hero-cta-wrapper {
+            display: flex;
             align-items: center;
-            gap: 1.5rem;
-            background: var(--smoke);
-            padding: 1.2rem 2.5rem;
-            border-radius: 60px;
-            border: 1px solid rgba(244, 162, 97, 0.3);
+            justify-content: center;
+            gap: 0;
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease-out 0.6s both;
         }
 
+        .hero-price-block {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: var(--smoke);
+            padding: 1rem 2rem;
+            border-radius: 60px 0 0 60px;
+            border: 1px solid rgba(244, 162, 97, 0.3);
+            border-right: none;
+            height: 70px;
+        }
+
         .hero-price {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--fire-gold);
+            line-height: 1;
         }
 
         .hero-price-text {
-            font-size: 1rem;
+            font-size: 0.85rem;
             opacity: 0.7;
             text-align: left;
+            line-height: 1.3;
         }
 
         .hero-cta {
-            display: inline-block;
-            padding: 1.3rem 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 2.5rem;
+            height: 70px;
             background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
             color: white;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -208,7 +222,7 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 1s ease-out 0.8s both;
+            border-radius: 0 60px 60px 0;
         }
 
         .hero-cta::before {
@@ -1146,12 +1160,11 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(180deg, transparent, var(--charcoal) 30%);
-            padding: 1.5rem 2rem 1rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(13, 13, 13, 0.95) 30%, var(--charcoal) 100%);
+            padding: 2rem 2rem 1.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 2rem;
             z-index: 100;
             transform: translateY(100%);
             transition: transform 0.4s ease;
@@ -1161,33 +1174,76 @@
             transform: translateY(0);
         }
 
+        .sticky-cta-inner {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 50px;
+            border: 1px solid rgba(244, 162, 97, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .sticky-price-block {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1.5rem;
+        }
+
         .sticky-price {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--fire-gold);
+            line-height: 1;
+        }
+
+        .sticky-price-label {
+            font-size: 0.75rem;
+            opacity: 0.6;
+            line-height: 1.2;
         }
 
         .sticky-button {
-            padding: 1rem 2rem;
+            padding: 0.9rem 2rem;
             background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
             color: white;
             text-decoration: none;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            font-size: 0.85rem;
+            border-radius: 50px;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .sticky-button:hover {
             transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(214, 40, 40, 0.4);
         }
 
         @media (max-width: 500px) {
             .sticky-cta {
-                flex-direction: column;
-                gap: 0.5rem;
-                padding: 1rem;
+                padding: 1.5rem 1rem 1rem;
+            }
+            
+            .sticky-cta-inner {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .sticky-price-block {
+                padding: 0.6rem 1rem;
+            }
+            
+            .sticky-price {
+                font-size: 1.2rem;
+            }
+            
+            .sticky-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -1220,11 +1276,13 @@
                 Глубокая работа с вашей картой Ба Цзы, даосские практики и активация 
                 денежных секторов для самого огненного года десятилетия
             </p>
-            <div class="hero-price-block">
-                <span class="hero-price">9 999 ₽</span>
-                <span class="hero-price-text">полный доступ<br>+ бонусная сессия</span>
+            <div class="hero-cta-wrapper">
+                <div class="hero-price-block">
+                    <span class="hero-price">9 999 ₽</span>
+                    <span class="hero-price-text">полный доступ<br>+ бонусная сессия</span>
+                </div>
+                <a href="#pricing" class="hero-cta">Забрать место →</a>
             </div>
-            <a href="#pricing" class="hero-cta">Забрать место →</a>
         </div>
         <div class="scroll-hint">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1841,8 +1899,13 @@
 
     <!-- Sticky CTA -->
     <div class="sticky-cta" id="stickyCta">
-        <span class="sticky-price">9 999 ₽</span>
-        <a href="#pricing" class="sticky-button">Забрать место</a>
+        <div class="sticky-cta-inner">
+            <div class="sticky-price-block">
+                <span class="sticky-price">9 999 ₽</span>
+                <span class="sticky-price-label">полный<br>доступ</span>
+            </div>
+            <a href="#pricing" class="sticky-button">Забрать место →</a>
+        </div>
     </div>
 
     <script>
