@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Марафон «Огненный Прорыв 2026» | 9 999 ₽</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --fire-orange: #FF6B35;
+            --fire-red: #D62828;
+            --fire-gold: #F4A261;
+            --deep-gold: #C9A227;
+            --ember: #FF9F1C;
+            --charcoal: #0D0D0D;
+            --smoke: #1A1A1A;
+            --ash: #2D2D2D;
+            --cream: #FAF3E0;
+            --ivory: #FFFEF9;
+            --water-blue: #457B9D;
+            --wood-green: #606C38;
+            --earth-brown: #BC6C25;
+            --metal-silver: #8D99AE;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--charcoal);
+            color: var(--cream);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Fire Background */
+        .fire-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(214, 40, 40, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(244, 162, 97, 0.1) 0%, transparent 40%),
+                var(--charcoal);
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--ember);
+            border-radius: 50%;
+            animation: float 20s infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.2; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .chinese-text {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-bg-text {
+            position: absolute;
+            font-size: clamp(4rem, 15vw, 12rem);
+            color: var(--fire-gold);
+            opacity: 0.05;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 700;
+            white-space: nowrap;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.6rem 2rem;
+            background: linear-gradient(135deg, rgba(214, 40, 40, 0.2), rgba(255, 107, 53, 0.1));
+            border: 1px solid var(--fire-gold);
+            color: var(--fire-gold);
+            font-size: 0.9rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-title span {
+            display: block;
+            background: linear-gradient(135deg, var(--fire-red), var(--fire-orange), var(--fire-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--cream);
+            opacity: 0.85;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-price-block {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--smoke);
+            padding: 1.2rem 2.5rem;
+            border-radius: 60px;
+            border: 1px solid rgba(244, 162, 97, 0.3);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--fire-gold);
+        }
+
+        .hero-price-text {
+            font-size: 1rem;
+            opacity: 0.7;
+            text-align: left;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1.3rem 3.5rem;
+            background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(214, 40, 40, 0.5);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-hint svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--fire-gold);
+            opacity: 0.5;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-number {
+            font-size: 0.85rem;
+            color: var(--fire-gold);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            color: var(--fire-orange);
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            opacity: 0.7;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Trigger Section */
+        .trigger-section {
+            background: linear-gradient(180deg, transparent, rgba(214, 40, 40, 0.03), transparent);
+            padding: 8rem 2rem;
+        }
+
+        .trigger-question {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            text-align: center;
+            margin-bottom: 4rem;
+            line-height: 1.35;
+        }
+
+        .trigger-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .trigger-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(45, 45, 45, 0.5);
+            border-radius: 12px;
+            border-left: 3px solid var(--fire-gold);
+            transition: all 0.3s ease;
+        }
+
+        .trigger-item:hover {
+            background: rgba(45, 45, 45, 0.8);
+            transform: translateX(5px);
+        }
+
+        .trigger-icon {
+            color: var(--fire-gold);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .trigger-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .trigger-text strong {
+            color: var(--fire-orange);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Quote Block */
+        .quote-block {
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: '"';
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8rem;
+            color: var(--fire-gold);
+            opacity: 0.1;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .quote-text {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-style: italic;
+            color: var(--fire-gold);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Pain Points */
+        .pain-section {
+            padding: 6rem 2rem;
+        }
+
+        .pain-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pain-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(244, 162, 97, 0.1);
+        }
+
+        .pain-arrow {
+            color: var(--fire-red);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .pain-text {
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .pain-cta {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(214, 40, 40, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(214, 40, 40, 0.2);
+        }
+
+        .pain-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pain-cta strong {
+            color: var(--fire-orange);
+            font-size: 1.3rem;
+        }
+
+        /* Horse & Fire Infographic */
+        .horse-fire-section {
+            padding: 8rem 2rem;
+            background: var(--smoke);
+        }
+
+        .horse-fire-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .horse-fire-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: var(--ash);
+            border-radius: 25px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+
+        .info-card.horse::before {
+            background: linear-gradient(90deg, var(--fire-red), var(--fire-orange), var(--fire-gold));
+        }
+
+        .info-card.fire::before {
+            background: linear-gradient(90deg, var(--fire-gold), var(--ember), var(--fire-orange));
+        }
+
+        .card-icon {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card-chinese {
+            font-size: 2.5rem;
+            color: var(--fire-gold);
+        }
+
+        .card-subtitle {
+            color: var(--fire-gold);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .card-traits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .trait {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .trait-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--fire-gold);
+            border-radius: 50%;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+
+        /* Compatibility Section */
+        .compatibility-section {
+            padding: 6rem 2rem;
+        }
+
+        .compat-visual {
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .compat-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .compat-label {
+            width: 150px;
+            text-align: right;
+            font-weight: 600;
+            color: var(--fire-gold);
+        }
+
+        .compat-animals {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .compat-animal {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .compat-animal.good {
+            background: rgba(96, 108, 56, 0.3);
+            border: 1px solid rgba(143, 179, 57, 0.5);
+            color: #8FB339;
+        }
+
+        .compat-animal.neutral {
+            background: rgba(141, 153, 174, 0.2);
+            border: 1px solid rgba(141, 153, 174, 0.4);
+            color: var(--metal-silver);
+        }
+
+        .compat-animal.challenge {
+            background: rgba(214, 40, 40, 0.2);
+            border: 1px solid rgba(214, 40, 40, 0.4);
+            color: var(--fire-red);
+        }
+
+        /* Program Section */
+        .program-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--charcoal), var(--smoke));
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .program-card {
+            background: linear-gradient(180deg, var(--ash), rgba(45, 45, 45, 0.5));
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(244, 162, 97, 0.1);
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(244, 162, 97, 0.3);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+        }
+
+        .program-card-number {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--fire-gold);
+            opacity: 0.1;
+        }
+
+        .program-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .program-card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-card-subtitle {
+            color: var(--fire-gold);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .program-card-list {
+            list-style: none;
+        }
+
+        .program-card-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        .program-card-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--fire-gold);
+        }
+
+        /* Practices Section */
+        .practices-section {
+            padding: 8rem 2rem;
+        }
+
+        .practices-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .practices-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .practice-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--smoke);
+            border-radius: 20px;
+            border: 1px solid rgba(244, 162, 97, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .practice-card:hover {
+            border-color: rgba(244, 162, 97, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .practice-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(214, 40, 40, 0.2), rgba(244, 162, 97, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .practice-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .practice-subtitle {
+            color: var(--fire-gold);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .practice-description {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Elements Balance */
+        .elements-section {
+            padding: 8rem 2rem;
+            background: var(--smoke);
+        }
+
+        .elements-visual {
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .element-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .element-name {
+            width: 100px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .element-bar-container {
+            flex: 1;
+            height: 30px;
+            background: var(--ash);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .element-bar {
+            height: 100%;
+            border-radius: 15px;
+            transition: width 1s ease;
+        }
+
+        .element-bar.fire { background: linear-gradient(90deg, var(--fire-red), var(--fire-orange)); }
+        .element-bar.earth { background: linear-gradient(90deg, #BC6C25, #DDA15E); }
+        .element-bar.metal { background: linear-gradient(90deg, #6B7280, #9CA3AF); }
+        .element-bar.water { background: linear-gradient(90deg, #1D3557, #457B9D); }
+        .element-bar.wood { background: linear-gradient(90deg, #606C38, #8FB339); }
+
+        .element-label {
+            width: 80px;
+            text-align: right;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .elements-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        /* Bonus Section */
+        .bonus-section {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .bonus-box {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(244, 162, 97, 0.1));
+            border: 2px solid var(--deep-gold);
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .bonus-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--deep-gold);
+            color: var(--charcoal);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .bonus-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+        .bonus-description {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .bonus-value {
+            font-size: 1rem;
+            color: var(--fire-gold);
+        }
+
+        /* For Who Section */
+        .for-who-section {
+            padding: 6rem 2rem;
+        }
+
+        .for-who-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .for-who-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .for-who-card {
+            padding: 2.5rem;
+            border-radius: 20px;
+        }
+
+        .for-who-card.yes {
+            background: linear-gradient(135deg, rgba(96, 108, 56, 0.15), rgba(45, 45, 45, 0.5));
+            border: 1px solid rgba(143, 179, 57, 0.3);
+        }
+
+        .for-who-card.no {
+            background: linear-gradient(135deg, rgba(214, 40, 40, 0.1), rgba(45, 45, 45, 0.5));
+            border: 1px solid rgba(214, 40, 40, 0.2);
+        }
+
+        .for-who-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .for-who-card.yes .for-who-title { color: #8FB339; }
+        .for-who-card.no .for-who-title { color: var(--fire-red); }
+
+        .for-who-list {
+            list-style: none;
+        }
+
+        .for-who-list li {
+            padding: 0.7rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .for-who-list li::before {
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .for-who-card.yes .for-who-list li::before { content: '✓'; color: #8FB339; }
+        .for-who-card.no .for-who-list li::before { content: '✗'; color: var(--fire-red); }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--smoke), var(--charcoal));
+            text-align: center;
+        }
+
+        .pricing-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--ash);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            border: 1px solid rgba(244, 162, 97, 0.2);
+            position: relative;
+        }
+
+        .pricing-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--fire-gold);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-amount {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--fire-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-currency {
+            font-size: 1.5rem;
+        }
+
+        .pricing-includes {
+            text-align: left;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 15px;
+        }
+
+        .pricing-includes-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--fire-gold);
+        }
+
+        .pricing-includes-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 500px) {
+            .pricing-includes-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pricing-includes-list li {
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pricing-includes-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--fire-gold);
+        }
+
+        .pricing-cta {
+            display: inline-block;
+            padding: 1.4rem 4rem;
+            background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 1rem;
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(214, 40, 40, 0.5);
+        }
+
+        .pricing-note {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            opacity: 0.6;
+        }
+
+        /* Final CTA */
+        .final-section {
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .final-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(214, 40, 40, 0.15), transparent 70%);
+            pointer-events: none;
+        }
+
+        .final-quote {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-style: italic;
+            color: var(--fire-gold);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .final-choice {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .final-choice p {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .final-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .final-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .final-option {
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-size: 1rem;
+        }
+
+        .final-option.no {
+            background: rgba(45, 45, 45, 0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.6;
+        }
+
+        .final-option.yes {
+            background: linear-gradient(135deg, rgba(214, 40, 40, 0.2), rgba(244, 162, 97, 0.1));
+            border: 1px solid var(--fire-gold);
+        }
+
+        .final-cta {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .final-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(214, 40, 40, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--charcoal);
+            border-top: 1px solid rgba(244, 162, 97, 0.1);
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--fire-gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.5;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, transparent, var(--charcoal) 30%);
+            padding: 1.5rem 2rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            z-index: 100;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .sticky-cta.visible {
+            transform: translateY(0);
+        }
+
+        .sticky-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--fire-gold);
+        }
+
+        .sticky-button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .sticky-button:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 500px) {
+            .sticky-cta {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fire-bg"></div>
+    <div class="particles">
+        <div class="particle" style="left: 5%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 15%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 25%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 35%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 45%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 55%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 65%; animation-delay: 1.5s;"></div>
+        <div class="particle" style="left: 75%; animation-delay: 3.5s;"></div>
+        <div class="particle" style="left: 85%; animation-delay: 2.5s;"></div>
+        <div class="particle" style="left: 95%; animation-delay: 4.5s;"></div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg-text chinese-text">火馬</div>
+        <div class="hero-content">
+            <div class="hero-badge">7 дней трансформации</div>
+            <h1 class="hero-title">
+                Марафон<br>
+                <span>«Огненный Прорыв 2026»</span>
+            </h1>
+            <p class="hero-subtitle">
+                Глубокая работа с вашей картой Ба Цзы, даосские практики и активация 
+                денежных секторов для самого огненного года десятилетия
+            </p>
+            <div class="hero-price-block">
+                <span class="hero-price">9 999 ₽</span>
+                <span class="hero-price-text">полный доступ<br>+ бонусная сессия</span>
+            </div>
+            <a href="#pricing" class="hero-cta">Забрать место →</a>
+        </div>
+        <div class="scroll-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Trigger Section -->
+    <section class="trigger-section">
+        <h2 class="trigger-question fade-in">
+            Почему одни люди <span style="color: var(--fire-gold)">процветают</span>,<br>
+            а другие — <span style="color: var(--fire-red)">выживают</span>?
+        </h2>
+        
+        <div class="trigger-grid">
+            <div class="trigger-item fade-in">
+                <span class="trigger-icon">✓</span>
+                <p class="trigger-text">
+                    <strong>Дело не в количестве денег.</strong>
+                    Можно зарабатывать много — и жить в тревоге, что завтра всё закончится
+                </p>
+            </div>
+            <div class="trigger-item fade-in">
+                <span class="trigger-icon">✓</span>
+                <p class="trigger-text">
+                    <strong>Дело не в отношениях.</strong>
+                    Можно быть в паре — и чувствовать себя одиноким
+                </p>
+            </div>
+            <div class="trigger-item fade-in">
+                <span class="trigger-icon">✓</span>
+                <p class="trigger-text">
+                    <strong>Дело не в знаниях.</strong>
+                    Можно прочитать сто книг — и ничего не изменить
+                </p>
+            </div>
+            <div class="trigger-item fade-in">
+                <span class="trigger-icon">✓</span>
+                <p class="trigger-text">
+                    <strong>Дело не в практиках.</strong>
+                    Можно медитировать годами — и не найти свой путь
+                </p>
+            </div>
+            <div class="trigger-item fade-in">
+                <span class="trigger-icon">✓</span>
+                <p class="trigger-text">
+                    <strong>Дело не в удаче.</strong>
+                    Можно родиться под счастливой звездой — и растратить всё
+                </p>
+            </div>
+            <div class="trigger-item fade-in">
+                <span class="trigger-icon">✓</span>
+                <p class="trigger-text">
+                    <strong>Дело не в «хорошести».</strong>
+                    Можно быть прекрасным человеком — и не иметь того, что хочешь
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <div class="quote-block fade-in">
+        <p class="quote-text">
+            «Секрет в том, чтобы знать свою карту. Знать, где ваши ресурсы. 
+            Где ваши блоки. И как активировать то, что уже заложено в вас»
+        </p>
+    </div>
+
+    <!-- Pain Points -->
+    <section class="pain-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Узнаёте себя?</div>
+                <h2 class="section-title">Это <span>ваша ситуация</span>?</h2>
+            </div>
+
+            <div class="pain-list">
+                <div class="pain-item fade-in">
+                    <span class="pain-arrow">→</span>
+                    <p class="pain-text">Чувствуете, что живёте не свою жизнь, но не понимаете, как найти свой путь</p>
+                </div>
+                <div class="pain-item fade-in">
+                    <span class="pain-arrow">→</span>
+                    <p class="pain-text">Деньги приходят и уходят — нет стабильности, нет роста, нет понимания «почему»</p>
+                </div>
+                <div class="pain-item fade-in">
+                    <span class="pain-arrow">→</span>
+                    <p class="pain-text">В отношениях что-то не складывается — или не можете найти партнёра, или не можете быть счастливы в паре</p>
+                </div>
+                <div class="pain-item fade-in">
+                    <span class="pain-arrow">→</span>
+                    <p class="pain-text">Пробовали разные практики, но эффект временный — через неделю всё возвращается</p>
+                </div>
+                <div class="pain-item fade-in">
+                    <span class="pain-arrow">→</span>
+                    <p class="pain-text">Устали от общих советов «просто верь» и «просто делай» — хотите понять свою систему</p>
+                </div>
+                <div class="pain-item fade-in">
+                    <span class="pain-arrow">→</span>
+                    <p class="pain-text">Чувствуете, что 2026 год будет особенным — но не знаете, как к нему подготовиться</p>
+                </div>
+            </div>
+
+            <div class="pain-cta fade-in">
+                <p>Если хотя бы 2 пункта — про вас:</p>
+                <strong>Этот марафон создан для вас</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horse & Fire Info -->
+    <section class="horse-fire-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Энергия года</div>
+                <h2 class="section-title">Лошадь и <span>Огонь</span> в 2026</h2>
+                <p class="section-subtitle">Почему этот год требует особой подготовки</p>
+            </div>
+
+            <div class="horse-fire-grid">
+                <!-- Horse Card -->
+                <div class="info-card horse fade-in">
+                    <svg class="card-icon" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="horseGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#D62828"/>
+                                <stop offset="50%" stop-color="#FF6B35"/>
+                                <stop offset="100%" stop-color="#F4A261"/>
+                            </linearGradient>
+                            <filter id="glow1">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <g filter="url(#glow1)">
+                            <ellipse cx="100" cy="90" rx="50" ry="30" fill="url(#horseGrad1)" opacity="0.9"/>
+                            <path d="M70 80 Q55 55 60 35 Q70 30 80 35 Q85 55 82 80" fill="url(#horseGrad1)"/>
+                            <ellipse cx="62" cy="28" rx="15" ry="12" fill="url(#horseGrad1)"/>
+                            <path d="M55 18 Q58 8 65 15 Q62 22 58 22Z" fill="url(#horseGrad1)"/>
+                            <path d="M80 35 Q100 15 90 0 Q85 12 78 8 Q82 25 72 32" fill="#FF6B35" opacity="0.7"/>
+                            <rect x="68" y="115" width="10" height="30" rx="3" fill="url(#horseGrad1)"/>
+                            <rect x="85" y="115" width="10" height="28" rx="3" fill="url(#horseGrad1)"/>
+                            <rect x="102" y="115" width="10" height="30" rx="3" fill="url(#horseGrad1)"/>
+                            <rect x="119" y="115" width="10" height="27" rx="3" fill="url(#horseGrad1)"/>
+                            <path d="M150 85 Q175 75 185 55 Q165 70 160 65 Q175 80 150 90" fill="#D62828" opacity="0.8"/>
+                            <path d="M150 88 Q170 80 178 65 Q163 75 160 72 Q172 85 150 93" fill="#FF6B35" opacity="0.6"/>
+                        </g>
+                        <circle cx="30" cy="20" r="2" fill="#FF9F1C" opacity="0.8">
+                            <animate attributeName="cy" values="20;5;20" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.8;0;0.8" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="95" cy="5" r="1.5" fill="#F4A261" opacity="0.6">
+                            <animate attributeName="cy" values="5;-10;5" dur="1.5s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.6;0;0.6" dur="1.5s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+
+                    <h3 class="card-title">
+                        <span class="card-chinese chinese-text">午</span>
+                        Лошадь
+                    </h3>
+                    <p class="card-subtitle">7-е животное китайского зодиака</p>
+
+                    <div class="card-traits">
+                        <div class="trait"><span class="trait-dot"></span> Энергия Ян</div>
+                        <div class="trait"><span class="trait-dot"></span> Стихия: Огонь</div>
+                        <div class="trait"><span class="trait-dot"></span> Сезон: Лето</div>
+                        <div class="trait"><span class="trait-dot"></span> Час: 11:00-13:00</div>
+                        <div class="trait"><span class="trait-dot"></span> Направление: Юг</div>
+                        <div class="trait"><span class="trait-dot"></span> Месяц: Июнь</div>
+                    </div>
+
+                    <p class="card-description">
+                        Лошадь управляет <strong>летним солнцестоянием</strong> — пиком энергии Ян в году. 
+                        Это животное символизирует движение, страсть, свободу и быстрые перемены. 
+                        В году Лошади события развиваются стремительно — те, кто готов, взлетают. 
+                        Те, кто не готов — не успевают за потоком.
+                    </p>
+                </div>
+
+                <!-- Fire Card -->
+                <div class="info-card fire fade-in">
+                    <svg class="card-icon" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="fireGrad1" x1="50%" y1="100%" x2="50%" y2="0%">
+                                <stop offset="0%" stop-color="#D62828"/>
+                                <stop offset="40%" stop-color="#FF6B35"/>
+                                <stop offset="70%" stop-color="#F4A261"/>
+                                <stop offset="100%" stop-color="#FF9F1C"/>
+                            </linearGradient>
+                            <filter id="fireGlow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <g filter="url(#fireGlow)">
+                            <path d="M100 10 Q130 40 120 70 Q140 50 130 90 Q150 70 135 110 Q160 100 140 130 Q130 145 100 145 Q70 145 60 130 Q40 100 65 110 Q50 70 70 90 Q60 50 80 70 Q70 40 100 10" fill="url(#fireGrad1)">
+                                <animate attributeName="d" dur="2s" repeatCount="indefinite" values="
+                                    M100 10 Q130 40 120 70 Q140 50 130 90 Q150 70 135 110 Q160 100 140 130 Q130 145 100 145 Q70 145 60 130 Q40 100 65 110 Q50 70 70 90 Q60 50 80 70 Q70 40 100 10;
+                                    M100 15 Q125 45 115 75 Q145 55 135 95 Q155 75 140 115 Q165 105 145 135 Q135 148 100 148 Q65 148 55 135 Q35 105 60 115 Q45 75 65 95 Q55 55 75 75 Q65 45 100 15;
+                                    M100 10 Q130 40 120 70 Q140 50 130 90 Q150 70 135 110 Q160 100 140 130 Q130 145 100 145 Q70 145 60 130 Q40 100 65 110 Q50 70 70 90 Q60 50 80 70 Q70 40 100 10
+                                "/>
+                            </path>
+                            <path d="M100 40 Q115 55 110 75 Q125 65 115 95 Q130 85 120 110 Q115 125 100 125 Q85 125 80 110 Q70 85 85 95 Q75 65 90 75 Q85 55 100 40" fill="#FF9F1C" opacity="0.7">
+                                <animate attributeName="d" dur="1.5s" repeatCount="indefinite" values="
+                                    M100 40 Q115 55 110 75 Q125 65 115 95 Q130 85 120 110 Q115 125 100 125 Q85 125 80 110 Q70 85 85 95 Q75 65 90 75 Q85 55 100 40;
+                                    M100 45 Q118 58 112 78 Q128 68 118 98 Q133 88 123 113 Q118 128 100 128 Q82 128 77 113 Q67 88 82 98 Q72 68 88 78 Q82 58 100 45;
+                                    M100 40 Q115 55 110 75 Q125 65 115 95 Q130 85 120 110 Q115 125 100 125 Q85 125 80 110 Q70 85 85 95 Q75 65 90 75 Q85 55 100 40
+                                "/>
+                            </path>
+                        </g>
+                        <circle cx="85" cy="25" r="3" fill="#FFFEF9" opacity="0.8">
+                            <animate attributeName="cy" values="25;5;25" dur="1.2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.8;0;0.8" dur="1.2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="115" cy="30" r="2" fill="#FFFEF9" opacity="0.6">
+                            <animate attributeName="cy" values="30;10;30" dur="1s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.6;0;0.6" dur="1s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="100" cy="20" r="2.5" fill="#FFFEF9" opacity="0.7">
+                            <animate attributeName="cy" values="20;0;20" dur="1.4s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.7;0;0.7" dur="1.4s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+
+                    <h3 class="card-title">
+                        <span class="card-chinese chinese-text">火</span>
+                        Огонь
+                    </h3>
+                    <p class="card-subtitle">Доминирующий элемент 9-го периода</p>
+
+                    <div class="card-traits">
+                        <div class="trait"><span class="trait-dot"></span> Полярность: Ян</div>
+                        <div class="trait"><span class="trait-dot"></span> Направление: Юг</div>
+                        <div class="trait"><span class="trait-dot"></span> Сезон: Лето</div>
+                        <div class="trait"><span class="trait-dot"></span> Орган: Сердце</div>
+                        <div class="trait"><span class="trait-dot"></span> Эмоция: Радость</div>
+                        <div class="trait"><span class="trait-dot"></span> Цвет: Красный</div>
+                    </div>
+
+                    <p class="card-description">
+                        В 2026 году Небесный Ствол — <strong>丙 (Огонь Ян)</strong>. 
+                        Это самый яркий, активный огонь — Солнце. В сочетании с огненной Лошадью 
+                        и 9-м периодом (2024-2044) это создаёт <strong>тройную концентрацию Огня</strong>. 
+                        Без баланса — выгорание. С балансом — невероятный рост.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compatibility -->
+    <section class="compatibility-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Совместимость</div>
+                <h2 class="section-title">Как Лошадь <span>взаимодействует</span> с другими знаками</h2>
+            </div>
+
+            <div class="compat-visual fade-in">
+                <div class="compat-row">
+                    <span class="compat-label">Союзники:</span>
+                    <div class="compat-animals">
+                        <span class="compat-animal good">🐯 Тигр</span>
+                        <span class="compat-animal good">🐕 Собака</span>
+                    </div>
+                </div>
+                <div class="compat-row">
+                    <span class="compat-label">Друзья:</span>
+                    <div class="compat-animals">
+                        <span class="compat-animal good">🐑 Коза</span>
+                    </div>
+                </div>
+                <div class="compat-row">
+                    <span class="compat-label">Нейтральные:</span>
+                    <div class="compat-animals">
+                        <span class="compat-animal neutral">🐉 Дракон</span>
+                        <span class="compat-animal neutral">🐍 Змея</span>
+                        <span class="compat-animal neutral">🐒 Обезьяна</span>
+                        <span class="compat-animal neutral">🐓 Петух</span>
+                        <span class="compat-animal neutral">🐖 Свинья</span>
+                        <span class="compat-animal neutral">🐇 Кролик</span>
+                    </div>
+                </div>
+                <div class="compat-row">
+                    <span class="compat-label">Столкновение:</span>
+                    <div class="compat-animals">
+                        <span class="compat-animal challenge">🐀 Крыса</span>
+                    </div>
+                </div>
+                <div class="compat-row">
+                    <span class="compat-label">Вред:</span>
+                    <div class="compat-animals">
+                        <span class="compat-animal challenge">🐂 Бык</span>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; opacity: 0.7; max-width: 600px; margin: 2rem auto;">
+                <strong>Важно:</strong> Это базовые взаимодействия. Полная картина зависит от вашей карты Ба Цзы — 
+                элементов, столпов, скрытых стволов. На марафоне разберём вашу карту детально.
+            </p>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <div class="quote-block fade-in">
+        <p class="quote-text">
+            «Вы не можете изменить энергию года. Но вы можете научиться ею управлять»
+        </p>
+    </div>
+
+    <!-- Program -->
+    <section class="program-section" id="program">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Программа</div>
+                <h2 class="section-title">Что вы <span>получите</span> на марафоне</h2>
+                <p class="section-subtitle">7 дней глубокой работы с вашей картой и энергией</p>
+            </div>
+
+            <div class="program-grid">
+                <div class="program-card fade-in">
+                    <span class="program-card-number">01</span>
+                    <div class="program-card-icon">🔮</div>
+                    <h3 class="program-card-title">Дворец Зачатия</h3>
+                    <p class="program-card-subtitle">Миссия вашей души</p>
+                    <ul class="program-card-list">
+                        <li>Научитесь находить Дворец Зачатия самостоятельно</li>
+                        <li>Высчитаете миссию души по карте Ба Цзы</li>
+                        <li>Поймёте своё предназначение в этой жизни</li>
+                        <li>Получите практики активации миссии</li>
+                        <li>Найдёте ключи к душевной гармонии</li>
+                    </ul>
+                </div>
+
+                <div class="program-card fade-in">
+                    <span class="program-card-number">02</span>
+                    <div class="program-card-icon">💰</div>
+                    <h3 class="program-card-title">Финансовая стратегия</h3>
+                    <p class="program-card-subtitle">Богатство в 9-м периоде</p>
+                    <ul class="program-card-list">
+                        <li>Разбор денежных элементов в вашей карте</li>
+                        <li>Поиск благоприятных стихий для богатства</li>
+                        <li>Стратегия на ближайшие 20 лет</li>
+                        <li>Действия для усиления денежного потока</li>
+                        <li>Защита финансов в огненном году</li>
+                    </ul>
+                </div>
+
+                <div class="program-card fade-in">
+                    <span class="program-card-number">03</span>
+                    <div class="program-card-icon">🏠</div>
+                    <h3 class="program-card-title">Денежный сектор Фен Шуй</h3>
+                    <p class="program-card-subtitle">Активация пространства на 20 лет</p>
+                    <ul class="program-card-list">
+                        <li>Определение денежного сектора в вашем доме</li>
+                        <li>Правильная активация сектора</li>
+                        <li>Что убрать, что добавить</li>
+                        <li>Работа с планом квартиры</li>
+                        <li>⚠️ Приготовьте план жилья!</li>
+                    </ul>
+                </div>
+
+                <div class="program-card fade-in">
+                    <span class="program-card-number">04</span>
+                    <div class="program-card-icon">💕</div>
+                    <h3 class="program-card-title">Дворец Брака</h3>
+                    <p class="program-card-subtitle">Гармония отношений</p>
+                    <ul class="program-card-list">
+                        <li>Найдёте свой Дворец Брака в карте</li>
+                        <li>Активации для привлечения партнёра</li>
+                        <li>Укрепление существующих отношений</li>
+                        <li>«Выгрузка» того, что мешает</li>
+                        <li>Практики гармонизации с партнёром</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practices -->
+    <section class="practices-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Практики</div>
+                <h2 class="section-title">Энергетическая <span>работа</span></h2>
+                <p class="section-subtitle">Древние техники для баланса в современном мире</p>
+            </div>
+
+            <div class="practices-grid">
+                <div class="practice-card fade-in">
+                    <div class="practice-icon">🧘</div>
+                    <h3 class="practice-title">Цигун Син Шен Джуанг</h3>
+                    <p class="practice-subtitle">Баланс 5 элементов через тело</p>
+                    <p class="practice-description">
+                        Древняя практика гармонизации всех пяти стихий внутри вас. 
+                        Работа с энергетическими каналами, укрепление тела, очищение блоков.
+                    </p>
+                </div>
+
+                <div class="practice-card fade-in">
+                    <div class="practice-icon">✨</div>
+                    <h3 class="practice-title">Медитации Шен Джен Гонг</h3>
+                    <p class="practice-subtitle">Манифестация и настройка</p>
+                    <p class="practice-description">
+                        Глубокие медитативные практики для работы с намерением. 
+                        Техники манифестации и настройка на энергии 9-го периода.
+                    </p>
+                </div>
+
+                <div class="practice-card fade-in">
+                    <div class="practice-icon">❤️</div>
+                    <h3 class="practice-title">Даосские практики Огня</h3>
+                    <p class="practice-subtitle">Гармонизация сердца и глаз</p>
+                    <p class="practice-description">
+                        Специальные техники для года Огненной Лошади. 
+                        Баланс сердца, практики для глаз, защита от «перегрева».
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Elements Balance -->
+    <section class="elements-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Баланс</div>
+                <h2 class="section-title">Энергия <span>2026 года</span></h2>
+                <p class="section-subtitle">Распределение элементов и что это значит для вас</p>
+            </div>
+
+            <div class="elements-visual fade-in">
+                <div class="element-row">
+                    <span class="element-name">🔥 Огонь</span>
+                    <div class="element-bar-container">
+                        <div class="element-bar fire" style="width: 85%;"></div>
+                    </div>
+                    <span class="element-label">Избыток</span>
+                </div>
+                <div class="element-row">
+                    <span class="element-name">🏔️ Земля</span>
+                    <div class="element-bar-container">
+                        <div class="element-bar earth" style="width: 45%;"></div>
+                    </div>
+                    <span class="element-label">Норма</span>
+                </div>
+                <div class="element-row">
+                    <span class="element-name">⚙️ Металл</span>
+                    <div class="element-bar-container">
+                        <div class="element-bar metal" style="width: 25%;"></div>
+                    </div>
+                    <span class="element-label">Дефицит</span>
+                </div>
+                <div class="element-row">
+                    <span class="element-name">💧 Вода</span>
+                    <div class="element-bar-container">
+                        <div class="element-bar water" style="width: 15%;"></div>
+                    </div>
+                    <span class="element-label">Острый дефицит</span>
+                </div>
+                <div class="element-row">
+                    <span class="element-name">🌿 Дерево</span>
+                    <div class="element-bar-container">
+                        <div class="element-bar wood" style="width: 35%;"></div>
+                    </div>
+                    <span class="element-label">Питает Огонь</span>
+                </div>
+            </div>
+
+            <div class="elements-legend">
+                <div class="legend-item">
+                    <span class="legend-dot" style="background: var(--water-blue);"></span>
+                    <span>Вода = Деньги (дефицит!)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot" style="background: var(--fire-red);"></span>
+                    <span>Огонь = Эмоции, страсть</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot" style="background: var(--metal-silver);"></span>
+                    <span>Металл = Структура</span>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; opacity: 0.8;">
+                <strong>Что это значит:</strong> Деньги (Вода) — в дефиците. Огонь испаряет воду. 
+                Без специальных практик и активаций финансовая нестабильность неизбежна. 
+                На марафоне научим, как компенсировать дефицит Воды в вашем пространстве и карте.
+            </p>
+        </div>
+    </section>
+
+    <!-- Bonus -->
+    <section class="bonus-section">
+        <div class="container">
+            <div class="bonus-box fade-in">
+                <span class="bonus-badge">🎁 Бонус</span>
+                <h3 class="bonus-title">Персональная сессия с мастерами</h3>
+                <p class="bonus-description">
+                    Для тех, кто заходит в марафон <strong>сегодня</strong> — дополнительная 
+                    индивидуальная сессия с разбором вашей карты Ба Цзы, ответами на личные вопросы 
+                    и персональными рекомендациями на 2026 год.
+                </p>
+                <p class="bonus-value">
+                    Обычная стоимость: от 5 000 ₽<br>
+                    <strong>Для участников марафона — в подарок</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Who -->
+    <section class="for-who-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Для кого</div>
+                <h2 class="section-title">Этот марафон <span>не для всех</span></h2>
+            </div>
+
+            <div class="for-who-grid">
+                <div class="for-who-card yes fade-in">
+                    <h3 class="for-who-title">✓ Для вас, если:</h3>
+                    <ul class="for-who-list">
+                        <li>Готовы к глубокой работе над собой</li>
+                        <li>Хотите понять свою карту и читать её сами</li>
+                        <li>Готовы выделить время на практики каждый день</li>
+                        <li>Хотите войти в 2026 год подготовленными</li>
+                        <li>Ищете систему, а не «волшебные таблетки»</li>
+                        <li>Готовы к переменам в деньгах, отношениях, жизни</li>
+                    </ul>
+                </div>
+
+                <div class="for-who-card no fade-in">
+                    <h3 class="for-who-title">✗ Не для вас, если:</h3>
+                    <ul class="for-who-list">
+                        <li>Ждёте, что всё сделают за вас</li>
+                        <li>Не готовы тратить 1-2 часа в день</li>
+                        <li>Хотите только «позитивных» прогнозов</li>
+                        <li>Ищете быстрые решения без усилий</li>
+                        <li>Скептически относитесь к восточным практикам</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="pricing-box fade-in">
+                <p class="pricing-label">Стоимость участия</p>
+                <p class="pricing-amount">9 999 <span class="pricing-currency">₽</span></p>
+
+                <div class="pricing-includes">
+                    <p class="pricing-includes-title">Что входит:</p>
+                    <ul class="pricing-includes-list">
+                        <li>7 дней интенсивной работы</li>
+                        <li>7+ часов практик и теории</li>
+                        <li>Разбор вашей карты Ба Цзы</li>
+                        <li>Работа с Фен Шуй дома</li>
+                        <li>Энергетические практики</li>
+                        <li>Даосские техники</li>
+                        <li>Бонусная сессия с мастерами</li>
+                        <li>Записи всех эфиров</li>
+                        <li>Доступ навсегда</li>
+                    </ul>
+                </div>
+
+                <a href="#" class="pricing-cta">Забрать место →</a>
+                <p class="pricing-note">Количество мест ограничено</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-section">
+        <p class="final-quote fade-in">
+            «2026 год уже начался. Огненная Лошадь уже скачет.<br>
+            Вопрос не в том, затронет ли она вашу жизнь.<br>
+            Вопрос в том — будете ли вы управлять этой энергией<br>
+            или она будет управлять вами»
+        </p>
+
+        <div class="final-choice fade-in">
+            <p><strong>У вас есть два пути:</strong></p>
+            <div class="final-options">
+                <div class="final-option no">
+                    Закрыть страницу и надеяться, что «как-нибудь разберётесь»
+                </div>
+                <div class="final-option yes">
+                    Получить полную карту себя — миссию, деньги, отношения, практики для баланса
+                </div>
+            </div>
+        </div>
+
+        <a href="#pricing" class="final-cta fade-in">Выбрать трансформацию →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo chinese-text">Эспаво 氣</div>
+        <p class="footer-text">Снежана × Валерия Хижная</p>
+        <p class="footer-text">© 2016-2026 Центр Эспаво. Все права защищены.</p>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <span class="sticky-price">9 999 ₽</span>
+        <a href="#pricing" class="sticky-button">Забрать место</a>
+    </div>
+
+    <script>
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '-50px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Sticky CTA
+        const stickyCta = document.getElementById('stickyCta');
+        const heroSection = document.querySelector('.hero');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > heroSection.offsetHeight) {
+                stickyCta.classList.add('visible');
+            } else {
+                stickyCta.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Element bars animation
+        const elementBars = document.querySelectorAll('.element-bar');
+        const elementsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        elementBars.forEach(bar => elementsObserver.observe(bar));
+    </script>
+</body>
+</html>
